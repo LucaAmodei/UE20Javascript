@@ -1,14 +1,7 @@
 function multiplesOccurences(myTab) {
-    let tab = [];
-    let answer = [];
-    myTab.forEach((value) => {
-        if (tab.indexOf(value) !== -1 && answer.indexOf(value) === -1) {
-            answer.push(value)
-        } else {
-            tab.push(value)
-        }
-    })
-    return answer;
+    return myTab.filter((x, i) => {
+        return myTab.findIndex(y => y === x) !== i
+    }).filter((value, index) => myTab.findIndex(y => y === value) !== index).sort();
 }
 
 //Test avec 3 fois 5
