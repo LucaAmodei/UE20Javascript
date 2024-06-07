@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Nasa Nine</title>
+    <style>
+        main {
+            margin: auto;
+            width: 1024px;
+        }
+        .photos {
+            display: flex;
+            flex-flow: row wrap;
+            width: 920px;
+            justify-content: space-between;
+            align-content: space-between;
+        }
+        .photos img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+    </style>
+    <script type="module" src="nasa.js"></script>
+</head>
+<body>
+<main>
+    <h1>Quelques photos de la Terre prises par la Nasa</h1>
+    <p>Obtention des références des photos en cours (<span id="nbrP">0</span>/9)</p>
+    <section class="photos">
+        <img id="nasa1" src="images/loading.jpg" alt="Chargement...">
+        <img id="nasa2" src="images/loading.jpg" alt="Chargement...">
+        <img id="nasa3" src="images/loading.jpg" alt="Chargement...">
+        <img id="nasa4" src="images/loading.jpg" alt="Chargement...">
+        <img id="nasa5" src="images/loading.jpg" alt="Chargement...">
+        <img id="nasa6" src="images/loading.jpg" alt="Chargement...">
+        <img id="nasa7" src="images/loading.jpg" alt="Chargement...">
+        <img id="nasa8" src="images/loading.jpg" alt="Chargement...">
+        <img id="nasa9" src="images/loading.jpg" alt="Chargement...">
+    </section>
+</main>
+</body>
+</html>
+
+<!--<script>
+    console.log("init gen");
+
+    async function getNASAImages() {
+        let count = 0;
+        for (let year = 2015; year <= 2018; year++) {
+            for (let month = 1; month <= 12; month++) {
+                const response = await fetch(`https://epic.gsfc.nasa.gov/api/enhanced/date/${year}-${month.toString().padStart(2, '0')}-01`);
+                const data = await response.json();
+                if (data.length > 0) {
+                    const randomIndex = Math.floor(Math.random() * data.length);
+                    const imageUrl = `https://epic.gsfc.nasa.gov/archive/enhanced/${year}/${month.toString().padStart(2, '0')}/01/png/${data[randomIndex].image}.png`;
+                    const imgElement = document.getElementById(`nasa${count + 1}`);
+                    imgElement.src = imageUrl;
+                    imgElement.alt = `${data[randomIndex].identifier} ${data[randomIndex].date}`;
+                    count++;
+                    document.getElementById("nbrP").innerText = count;
+                    if (count === 9) {
+                        return;
+                    }
+                }
+            }
+        }
+    }
+
+    getNASAImages().then(() => {
+        console.log("end gen");
+    }).catch(error => {
+        console.error(error);
+    });
+</script>-->

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Générer votre QR code</title>
+    <style>
+        form {
+            display: flex;
+            flex-flow: column nowrap;
+            margin: 3rem;
+        }
+        label {
+            padding: 0.5rem;
+        }
+        #butt_gen {
+            margin: 0.5rem;
+            align-self: flex-start;
+        }
+    </style>
+    <script type="module" src="gr_gen.js">
+    </script>
+</head>
+<body>
+<form>
+    <label>Url: <input type="url" name="url" id="url" value="" placeholder="Entrez votre url..."></label>
+    <label>Taille du QR code: <input type="number" name="psize" id="psize" value="100"></label>
+    <button type="button" id="butt_gen">Générer QR</button>
+</form>
+<div id="screen"></div>
+</body>
+</html>

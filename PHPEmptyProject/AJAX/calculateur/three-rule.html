@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Adaptez vos quantités</title>
+    <style>
+        main {
+            width: 1024px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+        }
+
+        label > input {
+            width: 3rem;
+        }
+
+        .ingredient {
+            margin: 0.2rem 0;
+        }
+
+        .ingredient > * {
+            width: 3rem;
+        }
+
+        .ingredient > *:first-child {
+            width: 15rem;
+        }
+    </style>
+    <script type="module" src="calculateur.js"></script>
+</head>
+<body>
+<main>
+    <h1>Calculateur des quantités d'ingrédients nécessaires en fonction des convives</h1>
+    <form id="formRecette">
+        <h2>La liste des ingrédients indiquées dans la recette</h2>
+        <label>
+            La recette est prévue pour <input type="number" id="nbrPersonnes" name="nbrPersonnes" value="4">
+            personne(s).</label>
+        <section id="ingredients">
+            <div class="ingredient">
+                <input type="text" name="ingredient-1" id="ingredient-1" value="" placeholder="ingrédient">
+                <input type="text" name="quantite-1" id="quantite-1" value="1">
+                <input type="text" name="unite-1" id="unite-1" list="unites" value="p">
+            </div>
+        </section>
+        <label>Ajouter <select id="nbrIngredients" name="nbrIngredients">
+            <option selected>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>5</option>
+            <option>10</option>
+        </select> ingrédient(s)</label>
+        <button type="button" name="butt_calc" id="butt_calc">Calculer les quantités</button>
+        <datalist id="unites">
+            <option value="p">pièce(s)</option>
+            <option value="g">gr</option>
+            <option value="kg">kg</option>
+            <option value="cl">cl</option>
+            <option value="dl">dl</option>
+            <option value="l">l</option>
+            <option value="cc">c. à café</option>
+            <option value="cs">c. à soupe</option>
+        </datalist>
+    </form>
+    <h2>Les quantités adaptées à vos convives:</h2>
+    <label>
+        Vous cuisinez pour <input type="number" id="nbrConvives" name="nbrConvives" value="2"> convive(s).
+    </label>
+    <ul id="quantites">
+    </ul>
+</main>
+</body>
+</html>
