@@ -10,12 +10,16 @@ let moyenneParEtutdian = getMoyenneByStudent(resultats);
 let moyenne = getMoyenne(moyenneParEtutdian)
 let bestStudent = getBestStudent(moyenneParEtutdian)
 let worstStudent = getWorstStudent(moyenneParEtutdian)
+
+//Affichage
 console.log(moyenneParEtutdian)
 console.log("La moyenne est de " + moyenne + "/20")
 console.log("La meilleure cote est de " + bestStudent.cote + "/20 (" + bestStudent.nom + ")")
 console.log("La meilleure cote est de " + worstStudent.cote + "/20 (" + worstStudent.nom + ")")
 
 console.log(getMoyenneCoteArrondies(moyenneParEtutdian))
+
+
 function getMoyenneByStudent(tab) {
     let result = [];
     tab.forEach(value => {
@@ -66,6 +70,5 @@ function getMoyenneCoteArrondies(tab) {
             count++
         }
     })
-    console.log(count)
     return Math.round((result / count) * 100) / 100
 }

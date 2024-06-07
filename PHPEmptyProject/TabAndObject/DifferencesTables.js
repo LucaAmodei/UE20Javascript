@@ -1,5 +1,4 @@
-
-export function differencesTables(tab1, tab2) {
+function differencesTables(tab1, tab2) {
     let answers = []
     tab1.forEach(value => {
         if (tab2.indexOf(value) === -1) {
