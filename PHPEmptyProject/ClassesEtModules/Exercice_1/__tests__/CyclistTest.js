@@ -1,7 +1,7 @@
-import {TableVal} from '../tableval.mjs';
 import assert from 'assert';
+import {TableVal} from "../../Th/tableval.mjs";
 
-describe('TableVal', function(){
+describe('Classement', function(){
     describe('somme', function(){
         it('somme (1,2,3,4,-5) == 5', function(){
             let t = new TableVal(1,2,3,4,-5);

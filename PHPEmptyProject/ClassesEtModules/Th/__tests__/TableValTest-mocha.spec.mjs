@@ -1,6 +1,5 @@
-
-import {TableVal} from '../tableval.mjs';
 import assert from 'assert';
+import {TableVal} from "../tableval.mjs";
 
 describe('TableVal', function(){
     describe('somme', function(){

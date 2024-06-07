@@ -21,15 +21,15 @@ class Cyclist {
 class Classement {
     constructor(cyclists, nbReward) {
         this.cyclists = cyclists
-        this.nbReward = nbReward
+        this.nbReward = nbReward //J'ai pas compris dans l'énnocé ce que cela représentais
     }
 
     addCyclist(...cyclist) {
-        this.cyclists = this.cyclists.concat(cyclist)
+        this.cyclists = this.cyclists.concat(cyclist) //Permet d'ajouter un ou plusieurs cycliste
     }
 
     disqualifyCyclist(cyclist) {
-        this.cyclists.splice(this.cyclists.findIndex(value => value === cyclist), 1)
+        this.cyclists.splice(this.cyclists.findIndex(value => value === cyclist), 1) //permet de retire un cycliste
     }
 
     getCyclistbyReward() {
