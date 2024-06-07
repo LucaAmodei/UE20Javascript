@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Album photo</title>
+    <style>
+        body {
+            display: flex;
+            flex-flow: column nowrap;
+            background-color: grey;
+            width: 100rem;
+            margin: 0 auto;
+            height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            height: 2rem;
+        }
+
+        .album {
+            background-color: white;
+            display: flex;
+            flex-flow: column nowrap;
+            width: 90rem;
+            flex-grow: 1;
+            margin: 0 auto;
+        }
+
+        #vignettes {
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: flex-start;
+            height: 3rem;
+            margin: 0 auto;
+            align-self: center;
+        }
+
+        .vignette {
+            flex-shrink: 1;
+            height: 3rem;
+            margin: 0 0.5rem;
+            padding: 0;
+        }
+
+        #ecran {
+            width: 40rem;
+            height: 20rem;
+            margin: 1rem auto;
+        }
+
+        footer {
+            width: 90rem;
+            height: 2rem;
+            background-color: #333;
+            color: grey;
+            text-align: right;
+            margin: 0 auto;
+        }
+
+        #add {
+            width: 4rem;
+            align-self: center;
+        }
+    </style>
+</head>
+<body>
+<script>
+    const urlImages = ['fantasy-1.jpg', 'fantasy-2.jpg', 'fantasy-3.jpg', 'fantasy-4.jpg', 'fantasy-5.jpg']
+    let count = 0;
+</script>
+    <h1>Album photos</h1>
+    <section class="album">
+        <img id="ecran" src="" alt="">
+        <button type="button" id="add" onclick="addPhoto()">+</button>
+        <div id="vignettes">
+        </div>
+    </section>
+    <footer>(Source: PIXABAY, Illustrateur: Stefan Keller)</footer>
+</body>
+</html>
+<script>
+    const vignettes = document.getElementById("vignettes")
+    addPhoto()
+
+    function addPhoto() {
+        if (count === 10) {
+            let button = document.getElementById("add")
+            button.style.display = "none"
+        }
+
+        addImage(urlImages[count % urlImages.length])
+        count++
+    }
+
+    function addImage(image) {
+        const img = document.createElement("img")
+        img.src = 'images/' + image
+        img.alt = "Image de " + image
+        img.classList.add('vignette')
+        img.addEventListener('click', () => {
+            const screen = document.getElementById("ecran")
+            screen.src = img.src
+            screen.alt = img.alt
+        })
+        img.click()
+        vignettes.appendChild(img)
+    }
+</script>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>StarWars Fat and Furious</title>
+    <script type="module" src="./sw.mjs">
+    </script>
+    <style>
+        body {
+            display: flex;
+            flex-flow: column nowrap;
+            height: 100vh;
+        }
+        main {
+            flex-grow: 1;
+        }
+        h1  {
+            text-align: center;
+        }
+        tr {
+            padding: 0.5rem;
+        }
+        td {
+            padding: 0 2rem;
+        }
+        .slim {
+            color: green;
+        }
+        .fat {
+            color: red;
+        }
+        .skinny {
+            color: purple;
+        }
+        table, form {
+            width: 50rem;
+            margin: 0 auto;
+        }
+        form {
+            display: flex;
+            justify-content: space-between;
+        }
+        footer {
+            width: 100%;
+            height: 2rem;
+            background-color: #333;
+            color: grey;
+            text-align: center;
+            margin: 0 auto;
+        }
+        footer a {
+            color:grey;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>StarWars Fat and Furious</h1>
+        <form>
+            <label>Name filter:<input type="text" id="pattern" placeholder="rechercher.."></label>
+            <div>
+                <label>In Year:<input type="text" id="yearBY" placeholder="year BBY or ABY" value="20ABY"></label>
+                <button type="button" id="search">Change Year</button>
+            </div>
+        </form>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Height</th>
+                    <th>Mass</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>BMI</th>
+                    <th>FMI</th>
+                </tr>
+            </thead>
+            <tbody id="rows">
+            </tbody>
+        </table>
+    </main>
+    <footer>(Sources des données: <a href="http://swapi.co" target="_blank">http://swapi.co</a>)</footer>
+</body>
+</html>

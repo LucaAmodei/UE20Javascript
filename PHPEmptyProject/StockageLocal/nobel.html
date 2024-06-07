@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of Nobel's prizes</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha512/0.8.0/sha512.js"></script>
+    <script type="module" src="./nobel.js"></script>
+    <style>
+        html {
+            background-color: #eeeeee;
+        }
+
+        body {
+            background-color: white;
+            width: 1024px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        h1 {
+            background-color: gray;
+            color: white;
+            margin: 0;
+            padding: 0 1rem;
+        }
+
+        form {
+            display: flex;
+            flex-flow: column nowrap;
+            align-items: center;
+            border: 1px dashed grey;
+            padding: 0.5rem;
+        }
+
+        header {
+            background-color: #333333;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            margin: 0 0 1rem 0;
+            align-content: center;
+            padding: 0 1rem;
+        }
+
+        #categories {
+            display: flex;
+            justify-content: space-evenly;
+
+        }
+
+        h3 {
+            background-color: darkgrey;
+            color: white;
+            text-align: center;
+        }
+
+        #years {
+            margin: 0.5rem;
+        }
+
+        #login {
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-evenly;
+            width: 100%;
+            padding: 1rem;
+        }
+
+        button {
+            width: 10rem;
+            margin: 1rem;
+        }
+
+        label span {
+            display: inline-block;
+            color: black;
+            width: 7rem;
+        }
+
+        button + span {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<h1>Nobel Prizes</h1>
+<section id="login">
+    <form id="loginForm">
+        <h2>Connect :</h2>
+        <label><span>Your name: </span><input type="text" name="loginName" id="loginName"></label>
+        <label><span>Your password: </span><input type="password" name="loginPassword" id="loginPassword"></label>
+        <button type="button" name="buttLogin" id="buttLogin">Login</button>
+        <span id="loginError"></span>
+    </form>
+    <form id="createAccountForm">
+        <h2>Create your account:</h2>
+        <label><span>Your name: </span><input type="text" name="accountName" id="accountName"></label>
+        <label><span>Your password: </span><input type="password" name="accountPassword" id="accountPassword"></label>
+        <button type="button" name="buttNewAccount" id="buttNewAccount">Create your account</button>
+        <span id="accountError"></span>
+    </form>
+</section>
+<section id="nobelFilter">
+    <header>
+        <p>Welcome <span id="userName"></span></p>
+        <form id="logoutForm">
+            <button type="button" name="buttLogout" id="buttLogout">Logout</button>
+        </form>
+    </header>
+    <form id="searchNobel">
+        <h2>Nobel's prizes filter</h2>
+        <div id="categories">
+        </div>
+        <div id="years">
+            <label>From year <input type="text" id="yearMin" value="0"></label>
+            <label> to year <input type="text" id="yearMax" value="0"></label>
+        </div>
+    </form>
+    <section id="prizes">
+    </section>
+</section>
+</body>
+</html>
