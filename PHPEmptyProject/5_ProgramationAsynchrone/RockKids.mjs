@@ -22,4 +22,4 @@ for (const e of enfants) {
     await e.obtenirScores(jury, scores);
 }
 
-scores.printWinner(enfants)
+scores.printWinner()

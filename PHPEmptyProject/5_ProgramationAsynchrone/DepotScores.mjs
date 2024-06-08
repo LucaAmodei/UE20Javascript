@@ -37,11 +37,7 @@ export class DepotScores {
         return total
     }
 
-    /**
-     *
-     * @param {Enfant[]} enfants
-     */
-    printWinner(enfants) {
+    printWinner() {
         console.log(`${this.bestKid.Enfant.nom} gagne avec ${this.bestKid.Score}`)
     }
     /**
