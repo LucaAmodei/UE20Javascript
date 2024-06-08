@@ -1,12 +1,11 @@
 let year = 2015
-let month = 1
+let month = 0
 for (let i = 1; i <= 9; i++) {
     managePhoto(i)
 }
 
 async function managePhoto(id) {
-    month = month < 10 ? "0" + month : month
-    const photo = await getPhoto(year, month)
+    const photo = await getPhoto()
 
     if (photo === null) {
         return false
@@ -22,16 +21,18 @@ async function managePhoto(id) {
 }
 
 async function getPhoto() {
-    if (month === 12) {
+    if (month >= 12) {
         month = 1
         year++
     } else {
         month++
     }
 
-    if (year === 2018 && month === 12) {
+    if (year >= 2019) {
         return null
     }
+
+    month = month < 10 ? "0" + month : month
 
     const apiUrlphotos = `https://epic.gsfc.nasa.gov/api/enhanced/date/${year}-${month}-01`
 
@@ -46,7 +47,7 @@ async function getPhoto() {
             if (jsons[0] === undefined) {
                 getPhoto()
             }
-            return jsons[Math.floor(Math.random() * jsons.length)].image
+            return jsons[Math.round(Math.random() * jsons.length)].image
         }).catch(error => console.log(error)
         )
 }
