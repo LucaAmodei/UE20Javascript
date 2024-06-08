@@ -68,6 +68,7 @@ function getRandomInt(max) {
 }
 
 /*
+JSP ce que c'est mais je le laisse quand même
 const delai = getRandomInt(5001);
 setTimeout(() => {
     const score = getRandomInt(11);
