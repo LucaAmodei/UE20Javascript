@@ -57,7 +57,8 @@ document.getElementById("butt_calc").addEventListener("click", () => {
         ingredients: ingredients
     };
 
-    let urlBase = 'https://panoramix.cg.helmo.be/~p150107/tutoriels';
+    //'https://panoramix.cg.helmo.be/~p150107/tutoriels' Des fois je dois utiliser cette url sinon ca marche pas (Avec VPN)
+    let urlBase = 'https://dartagnan.cg.helmo.be/~p150107/tutoriels';
     let data = JSON.stringify({ingredients: recette});
     fetch(`${urlBase}/js-ajax/exercices/three-rule.php`, {method: "POST", body: data})
         .then(response => {
