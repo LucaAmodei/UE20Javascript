@@ -64,47 +64,16 @@
             align-self: center;
         }
     </style>
+    <script type="module" src="fantasy.mjs"></script>
 </head>
 <body>
-<script>
-    const urlImages = ['fantasy-1.jpg', 'fantasy-2.jpg', 'fantasy-3.jpg', 'fantasy-4.jpg', 'fantasy-5.jpg']
-    let count = 0;
-</script>
     <h1>Album photos</h1>
     <section class="album">
         <img id="ecran" src="" alt="">
-        <button type="button" id="add" onclick="addPhoto()">+</button>
+        <button type="button" id="add">+</button>
         <div id="vignettes">
         </div>
     </section>
     <footer>(Source: PIXABAY, Illustrateur: Stefan Keller)</footer>
 </body>
 </html>
-<script>
-    const vignettes = document.getElementById("vignettes")
-    addPhoto()
-
-    function addPhoto() {
-        if (count === 10) {
-            let button = document.getElementById("add")
-            button.style.display = "none"
-        }
-
-        addImage(urlImages[count % urlImages.length])
-        count++
-    }
-
-    function addImage(image) {
-        const img = document.createElement("img")
-        img.src = 'images/' + image
-        img.alt = "Image de " + image
-        img.classList.add('vignette')
-        img.addEventListener('click', () => {
-            const screen = document.getElementById("ecran")
-            screen.src = img.src
-            screen.alt = img.alt
-        })
-        img.click()
-        vignettes.appendChild(img)
-    }
-</script>
