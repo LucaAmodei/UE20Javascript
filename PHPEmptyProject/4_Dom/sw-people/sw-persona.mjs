@@ -5,9 +5,9 @@
  */
 function convertYearBYToYear(yearBY){
     if (yearBY.endsWith("ABY")) {
-        return -parseInt(yearBY.substring(0, yearBY.charAt("A")))
+        return -parseInt(yearBY.substring(0, yearBY.charAt('A') + 1))
     } else if (yearBY.endsWith("BBY")) {
-        return parseInt(yearBY.substring(0, yearBY.charAt("B")))
+        return parseInt(yearBY.substring(0, yearBY.charAt('B') + 1))
     }
 
     return -1
@@ -19,7 +19,7 @@ function convertYearBYToYear(yearBY){
  * @return {string}
  */
 function convertYearToYearBY(year){
-    return Math.abs(number) + (Math.sign(number) === -1) ? "ABY" : "BBY"
+    return Math.abs(year) + (Math.sign(year) === -1) ? "ABY" : "BBY"
 }
 
 /**
@@ -32,11 +32,11 @@ export class Persona {
      */
     constructor(peopleItem){
         this.name = peopleItem['name'];
-        this.height = peopleItem['height'];
+        this.height = peopleItem['height'] / 100;
         this.mass = peopleItem['mass'];
         this.birthDate = peopleItem['birth_year'];
         this.gender = peopleItem['gender'];
-        this.BMI = this.mass / (this.height * this.height);
+        this.BMI = Math.round(this.mass / (this.height * this.height) * 100) /  100.00;
     }
 
     /**
@@ -44,7 +44,7 @@ export class Persona {
      * @return {string}
      */
     get birthDateBY(){
-        return convertYearToYearBY(this.birthDate);
+        return this.birthDate;
     }
 
     /**
@@ -63,12 +63,11 @@ export class Persona {
      */
     getFMI(year){
         if (this.gender === "male") {
-            return (1.2 * this.BMI) + (0.23 * this.getAge(year) - 16.2);
+            return Math.round((1.2 * this.BMI* 100) + (0.23 * this.getAge(year) - 16.2)*100) / 100.00;
         } else if (this.gender === "female") {
-            return (1.2 * this.BMI) + (0.23 * this.getAge(year) - 16.2);
+            return Math.round((1.2 * this.BMI * 100) + (0.23 * this.getAge(year) - 5.4)*100) / 100.00;
         }
-
-        return this.BMI;
+        return Math.round(this.BMI*100) / 100.00;
     }
 
 }
@@ -92,7 +91,7 @@ export class PersonaInYear extends Persona {
      * Fonction statique qui retourne une fonction de comparaison selon le critère et l'ordre croissant/décroissant
      */
      compare(/*TODO  ?? */){
-       //TODO  
+       //TODO
      }
     
 }
