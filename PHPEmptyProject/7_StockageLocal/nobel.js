@@ -7,8 +7,6 @@ const register = document.getElementById("buttNewAccount")
 const logout = document.getElementById("buttLogout")
 const usernameTag = document.getElementById("userName")
 
-var nobels
-
 nobelFilter.style.display = "none"
 
 register.addEventListener("click", async () => {
@@ -30,6 +28,7 @@ login.addEventListener("click", async () => {
     const loginPassword = document.getElementById("loginPassword").value
 
     if (!connectionUser(loginName, loginPassword)) {
+        document.getElementById("loginError").textContent = "Mot de passe ou utilisateur incorrecte"
         return
     }
 
