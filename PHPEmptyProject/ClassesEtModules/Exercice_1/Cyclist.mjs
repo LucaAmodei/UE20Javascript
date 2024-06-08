@@ -1,4 +1,4 @@
-class Cyclist {
+export class Cyclist {
     constructor(matricule, name, score) {
         this.matricule = matricule
         this.name = name
@@ -18,7 +18,7 @@ class Cyclist {
     }
 }
 
-class Classement {
+export class Classement {
     constructor(cyclists, nbReward) {
         this.cyclists = cyclists
         this.nbReward = nbReward //J'ai pas compris dans l'énnocé ce que cela représentais
