@@ -2,8 +2,8 @@
     Ce fichier importe le fichier de données sw-people-list.mjs ainsi que le fichier sw-personna.js.
     Dans ce fichier, créez les fonctions nécessaires pour placer les gestionnaires d'événements et adapter le DOM en conséquence....
 */
-import {peopleList} from "/sw-people-list.mjs";
-import {PersonaInYear} from "/sw-persona.mjs";
+import {peopleList} from "/PHPEmptyProject/4_Dom/sw-people/sw-people-list.mjs";
+import {PersonaInYear} from "/PHPEmptyProject/4_Dom/sw-people/sw-persona.mjs";
 
 function GetPersonasFromPeople() {
     var row = document.getElementById("rows");
