@@ -7,6 +7,7 @@ export class DepotScores {
      * @param {Arbitre[]} jury
      */
     constructor(jury) {
+        this.bestKid = {Enfant: undefined, Score: 0}
         this.scores = new Map()
         jury.forEach(arbitre => {
             this.scores.set(arbitre.nom, new Map)
@@ -36,6 +37,13 @@ export class DepotScores {
         return total
     }
 
+    /**
+     *
+     * @param {Enfant[]} enfants
+     */
+    printWinner(enfants) {
+        console.log(`${this.bestKid.Enfant.nom} gagne avec ${this.bestKid.Score}`)
+    }
     /**
      *
      * @param {Enfant} enfant

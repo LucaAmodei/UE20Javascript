@@ -39,7 +39,12 @@ export class Arbitre extends Personne {
                 depotScores.sauverScore(this, enfant, score)
                 console.log(`${enfant.nom} obtient ${score} de la part de ${this.nom} !`)
                 if (depotScores.isDone(enfant)) {
-                    console.log(`***** ${enfant.nom} obtient un total de ${depotScores.totaliserScores(enfant)} points. *****`)
+                    const value = depotScores.totaliserScores(enfant)
+                    console.log(`***** ${enfant.nom} obtient un total de ${value} points. *****`)
+                    if (value > depotScores.bestKid.Score) {
+                        depotScores.bestKid = {Enfant: enfant, Score: value}
+                    }
+
                 }
                 resolve()
             })
@@ -68,24 +73,47 @@ function getRandomInt(max) {
 }
 
 /*
-JSP ce que c'est mais je le laisse quand même
-const delai = getRandomInt(5001);
-setTimeout(() => {
-    const score = getRandomInt(11);
-    depotScores.sauverScore(this, enfant, score);
-    console.log(`${enfant.nom} obtient ${score} de la part de ${this.nom} !`);
-    if (depotScores.isDone(enfant)) {
-        callback();
+Version asynchrone
+export class Arbitre extends Personne {
+    constructor(nom) {
+        super(nom)
     }
-}, delai);
 
 
-obtenirScores(jury, scores) {
-        jury.forEach(arbitre => {
-            arbitre.coter(scores, this,
-                () => {
-                    console.log(`***** ${this.nom} obtient un total de ${scores.totaliserScores(this)} points. *****`)
-                });
-        });
+interogerArbitre() {
+    const delai = getRandomInt(7001)
+    if (delai <= 5000) {
+        return new Promise((resolve) => setTimeout(() => resolve(getRandomInt(11)), delai))
+    } else {
+        return new Promise((resolve) => setTimeout(() => {
+            console.log(`Arbitre ${this.nom} distrait`)
+            resolve(getRandomInt(6) + 5)
+        }, 5000))
     }
+}
+
+coter(depotScores, enfant) {
+    console.log(`Vote de ${this.nom} sur ${enfant.nom} ?`)
+    return new Promise((resolve) => {
+        this.interogerArbitre().then(score => {
+            depotScores.sauverScore(this, enfant, score)
+            console.log(`${enfant.nom} obtient ${score} de la part de ${this.nom} !`)
+            if (depotScores.isDone(enfant)) {
+                console.log(`***** ${enfant.nom} obtient un total de ${depotScores.totaliserScores(enfant)} points. *****`)
+            }
+            resolve()
+        })
+    });
+}
+}
+
+export class Enfant extends Personne {
+    constructor(nom) {
+        super(nom)
+    }
+    obtenirScores(jury, scores) {
+        const promessesVotes = jury.map(arbitre => arbitre.coter(scores, this))
+        Promise.all(promessesVotes).then(r => r)
+    }
+}
  */
