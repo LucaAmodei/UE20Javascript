@@ -1,3 +1,4 @@
+import "https://cdnjs.cloudflare.com/ajax/libs/js-sha512/0.8.0/sha512.js"
 const urlBase = 'https://dartagnan.cg.helmo.be/~p150107/tutoriels';
 
 const nobelFilter = document.getElementById("nobelFilter")
@@ -8,6 +9,8 @@ const logout = document.getElementById("buttLogout")
 const usernameTag = document.getElementById("userName")
 
 nobelFilter.style.display = "none"
+
+let nobels
 
 register.addEventListener("click", async () => {
     const registerName = document.getElementById("accountName").value
@@ -53,6 +56,7 @@ async function goFilter(name) {
     setCategorieInDoc(getAllCategories())
 
     let filter = getLastFilter(name)
+    setDocumentFilter(filter)
     let filteredNobels = filterNobelPrizes(filter)
     displayNobels(filteredNobels)
 }
@@ -98,7 +102,7 @@ function displayNobels(nobelsFilter) {
 }
 
 function getAllCategories() {
-    var categories = [];
+    const categories = [];
 
     nobels.prizes.forEach(prize => {
         if (!categories.includes(prize.category)) {
@@ -118,15 +122,15 @@ function setCategorieInDoc(allCategories) {
     ul.style.listStyleType = "none"
 
     allCategories.forEach(cat => {
-        var checkbox = document.createElement("input")
+        const checkbox = document.createElement("input");
         checkbox.type = "checkbox"
         checkbox.name = "category"
         checkbox.value = cat
 
-        var label = document.createElement("label")
+        const label = document.createElement("label");
         label.appendChild(document.createTextNode(cat))
 
-        var listItem = document.createElement("li")
+        const listItem = document.createElement("li");
         listItem.appendChild(checkbox)
         listItem.appendChild(label)
 
@@ -135,7 +139,7 @@ function setCategorieInDoc(allCategories) {
 
     categorie.appendChild(ul)
 
-    var categoryCheckboxes = ul.querySelectorAll('input[name="category"]');
+    const categoryCheckboxes = ul.querySelectorAll('input[name="category"]');
     categoryCheckboxes.forEach(function (checkbox) {
         checkbox.addEventListener("change", createFilterObject);
     });
@@ -183,16 +187,16 @@ function connectionUser(loginName, loginPassword) {
 
 
 function createFilterObject() {
-    var yearMin = document.getElementById("yearMin").value;
-    var yearMax = document.getElementById("yearMax").value;
+    const yearMin = document.getElementById("yearMin").value;
+    const yearMax = document.getElementById("yearMax").value;
 
-    var selectedCategories = [];
-    var categoryCheckboxes = document.querySelectorAll('input[name="category"]:checked');
+    const selectedCategories = [];
+    const categoryCheckboxes = document.querySelectorAll('input[name="category"]:checked');
     categoryCheckboxes.forEach(function (checkbox) {
         selectedCategories.push(checkbox.value);
     });
 
-    var filterObject = {
+    const filterObject = {
         yearMin: yearMin,
         yearMax: yearMax,
         selectedCategories: selectedCategories
