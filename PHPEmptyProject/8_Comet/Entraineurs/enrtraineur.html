@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Exercice de multiples</title>
     <script type="module" src="entraineur.js"></script>
     <style>
         body {
@@ -14,25 +14,16 @@
         h1 {
             font-size: 3rem;
         }
-
         main section  {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
         }
-
         #number {
             font-size: 10rem;
         }
-        #changeNumber {
-            color: white;
-            background-color: #00c4a7;
-            border-radius: 4px;
-            border-style: solid;
-            border-width: 0 0 0 0;
-            font-size: 2rem;
-            padding: 0.5rem;
+        div {
             margin-top: -3rem;
         }
     </style>
@@ -40,13 +31,16 @@
 <body>
 <header>
     <section>
-        <h1>Guess the divider, it'll be fun !</h1>
+        <h1>Guess the divider, it'll be fun!</h1>
     </section>
 </header>
 <main>
     <section>
         <p id="number">42</p>
-        <button type="button" id="changeNumber">Nombre suivant</button>
+        <div>
+            <input type="number" id="inputNumber" placeholder="entre ton diviseur">
+            <button type="button" id="changeNumber">Nombre suivant</button>
+        </div>
     </section>
 </main>
 <footer>
