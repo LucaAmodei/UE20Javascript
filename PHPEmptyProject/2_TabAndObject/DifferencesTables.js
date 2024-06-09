@@ -14,7 +14,7 @@ function differencesTables(tab1, tab2) {
     return answers
 }
 //Correction de thilleux
-//TODO return arr1.filter(item => !arr2.includes(item)).concat(arr2.filter(item => !arr1.includes(item)));
+//return arr1.filter(item => !arr2.includes(item)).concat(arr2.filter(item => !arr1.includes(item)));
 
 let a = ["a","b","c","d","e","f"];
 let b = ["a","b","j","j"];
