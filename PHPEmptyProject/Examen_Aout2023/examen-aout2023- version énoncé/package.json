@@ -1,0 +1,18 @@
+{
+  "name": "examen-aout2023-complet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.mjs",
+  "directories": {
+    "test": "dictio-p150107/tests"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "V MARTIN",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.3.7",
+    "mocha": "^10.2.0"
+  }
+}

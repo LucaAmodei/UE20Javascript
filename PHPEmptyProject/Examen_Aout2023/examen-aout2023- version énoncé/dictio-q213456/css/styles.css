@@ -1,0 +1,87 @@
+html {
+    background-size: auto 100%;
+    background-position: center;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+body {
+	display: flex;
+	min-height: 100vh;
+	flex-flow: column nowrap;
+}
+header {
+    text-align: center;
+    color: #fff;
+    background-color: #333;
+    margin: 0;
+}
+h1 {
+	margin-bottom: 0;
+}
+span.frequency {
+	font-weight: normal;
+}
+span.frequency::before {
+	content: " [";
+}
+span.frequency::after {
+	content: "]";
+}
+main {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-around;
+	background-color: #aaa;
+	flex-grow: 1;
+}
+section {
+	margin: 0.2rem;
+	padding: 0.4rem;
+	background-color: #fff;
+}
+section > p, dd {
+	text-align: justify;
+	text-indent: 1rem;
+}
+dt {
+	font-weight: bold;
+}
+section, aside {
+	flex-basis: 45%;
+}
+aside {
+	background-color: #eee;
+	padding: 0.4rem;
+}
+span.tag {
+	background-color: #eee;
+	font-weight: bold;
+}
+span.active, dt.active {
+	background-color: #ffff00;
+	font-weight: bold;
+}
+ul {
+	display: flex;
+	flex-flow: row nowrap;
+	list-style-type: none;
+	background-color: #333;
+	justify-content: space-around;
+	margin: 0;
+}
+a {
+	display: inline-block;
+	color: #fff;
+	background-color: #0000ff;
+	padding: 0.5rem;
+	margin-left: 1rem;
+	text-decoration: none;
+	border: 1px inset gray;
+	border-radius: 0.5rem;
+}
+a:hover {
+	background-color: #999;
+}
+a:visited, a:active {
+	color: #fff;
+}
