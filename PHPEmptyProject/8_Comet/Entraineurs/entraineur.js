@@ -1,15 +1,25 @@
-const url = "https://panoramix.cg.helmo.be/~p150107/tutoriels/js-comet/exercices/suite.php?n="
+const url = "https://dartagnan.cg.helmo.be/~p150107/tutoriels/js-comet/exercices/suite.php?n="
 const number = document.getElementById("number")
 const changeButton = document.getElementById("changeNumber")
 
+let eventSource
+
 changeColor()
+initializeEventSource(1)
 
 changeButton.addEventListener("click", () => {
-    number.textContent = getNumber()
+    number.textContent = "waiting for another value"
+    let value = document.getElementById("inputNumber").value
+    if (eventSource) {
+        eventSource.close()
+        eventSource = null
+    }
+    initializeEventSource(value)
 })
+
 function changeColor() {
     number.style.color = getRandomColors()
-    setTimeout(changeColor, 1500)
+    setTimeout(changeColor, 10000) // 10000 millisecondes
 }
 
 /**
@@ -17,14 +27,18 @@ function changeColor() {
  */
 function getRandomColors() {
     const colors = ['red', 'blue', 'green', 'yellow', 'purple', 'orange', 'pink', 'brown', 'black', 'gray']
-    return colors[Math.round(Math.random() * colors.length)]
+    return colors[Math.round(Math.random() * (colors.length - 1))]
 }
 
-function getNumber() {
-    const value = document.getElementById("inputNumber").value
-    //TODO Here utiliser l'url pour récupérer les nombres qu'il faut
-    fetch(url + value).then()
-    return value !== "" ? value : number.textContent
-}
+/**
+ * Initialise l'EventSource pour recevoir les nombres depuis le serveur.
+ * @param {number} value - La valeur entrée par l'utilisateur.
+ */
+function initializeEventSource(value) {
+    eventSource = new EventSource(`${url}${value}`)
 
-//Cette exercice n'est pas fini mais je le fais pas vu que c'est pas la matière
+    eventSource.onmessage = function (e) {
+        const obj = JSON.parse(e.data)
+        number.textContent = obj.number
+    }
+}
