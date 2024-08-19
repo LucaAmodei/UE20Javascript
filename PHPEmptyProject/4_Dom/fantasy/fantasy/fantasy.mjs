@@ -20,7 +20,7 @@ function addPhoto() {
 }
 
 function addImage(image) {
-    const img = document.createElement("img")
+    const img = document.createElement("images")
     img.src = 'images/' + image
     img.alt = "Image de " + image
     img.classList.add('vignette')

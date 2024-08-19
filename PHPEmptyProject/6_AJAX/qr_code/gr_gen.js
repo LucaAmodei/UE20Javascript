@@ -18,7 +18,7 @@ document.getElementById("butt_gen").addEventListener("click", () => {
             const screen = document.getElementById("screen")
             screen.innerHTML = '';
 
-            const img = document.createElement('img');
+            const img = document.createElement('images');
             img.src = qrCodeUrl
             screen.appendChild(img)
         })
